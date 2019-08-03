@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org/" ng-app="appMaps">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Dynamic GPS Maps</title>
+    
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <script src="js/angular.js"></script>
+    <script src="js/lodash.js"></script>
+    <script src="js/angular-simple-logger.js"></script>
+    <script src="js/angular-google-maps.js?key=AIzaSyDPwOsXQHklBAmpvQ53J6AS_vq7JpMIx_U&"></script>
+    <script type='text/javascript' src='controllers/map.js'></script>
+    <script src="js/simple-grid.js"></script>
+    
+</head>
+
+<body>
+
+<div id="map_canvas" ng-controller="mainCtrl">
+    <ui-gmap-google-map 
+    	center="map.center" 
+    	zoom="map.zoom" 
+    	draggable="true" 
+    	options="options" 
+    	bounds="map.bounds"
+    	events="mapEvents">
+    	
+    	<ui-gmap-marker ng-repeat="m in markers" coords="m.coords" options="m.options" idkey="m.id"></ui-gmap-marker>
+    </ui-gmap-google-map>
+
+
+<!--     This section is for controls -->
+	<!--     This section is for the grid -->
+	<div class="grid-visibility-control">
+		 <a ng-click="loadLocationsFile()">
+		 	<img title="Load Locations" src="img/load2.svg" width="24" height="24">
+		 </a>
+	</div>
+</div>
+
+</body>
+
+</html>
+		
